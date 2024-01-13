@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>電腦更新情況</title>
+    <style>
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        body {
+            font-size: 16px;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
+        }
+        
+        .header {
+            display: flex;
+            background-color: #ffffff;
+        }
+
+        .header nav {
+            display: flex;
+            justify-content: space-between; 
+            width: 100%;
+            height: 90px;
+            text-align: left;
+            font-size: 0;
+            background-color: #0D2440;
+        }
+
+        .header nav a {
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+            color: #fff;
+            line-height: 90px;
+            padding: 0px 30px;
+        }
+
+        .header nav a:hover {
+            background: #8b8b8b;
+        }
+
+        .header .logo {
+            display: inline-block;
+            padding: 6px 0;
+        }
+
+        .item h3 {
+            font-size: 16px;
+            padding: 0 0 30px;
+        }
+
+        .banner img {
+            width: 100%;
+        }
+
+        .about .wrap {
+            display: flex;
+        }
+
+        .wrap {
+            width: 960px;
+            margin: auto;
+        }
+
+        .about .item {
+            width: 300px;
+            margin: 0 10px;
+            text-align: center;
+        }
+
+        .about .item img {
+            border-radius: 30%;
+        }
+
+        .about .wrap0 h2 {
+            width: 960px;
+            font-size: 42px;
+            margin: auto;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .about .wrap0 p {
+            width: 960px;
+            margin: auto;
+            padding: 20px 0 40px;
+            text-align: center;
+        }
+
+        .about {
+            width: 960px;
+            margin-right: 6.8%;
+            background-color: #d4edea;
+        }
+
+
+        .container {
+            width: 86.3%; /* 可以是其他寬度，例如固定寬度或最大寬度 */
+            margin: auto;
+
+        }
+
+        .sidebar2 {
+            width: 10%;
+            float: left;
+            height: 400px;
+            text-align: center;
+            font-size: 15px;
+            color: #ffffff;
+            font-weight: bold;
+            background-color: rgba(35, 69, 110, 0.8);
+            position: relative; /* 新增這一行 */
+        }
+
+        .sidebar2-form {
+            width: 100%;;
+            height: 400px;
+        }
+
+
+        .sidebar2-form fieldset {
+            border: none;
+            text-align: left;
+
+        }
+
+        .sidebar2-form fieldset legend {
+            font-size: 20px;
+            color: #ffffff;
+            margin-bottom: 5px;
+
+        }
+
+        .sidebar2-form div {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .center {
+            width: 90%; /* 調整寬度以確保總和不超過 100% */
+            float: left;
+            height: 400px;
+            text-align: center;
+            line-height: 280px;
+            font-size: 15px;
+            color: #fffaf3;
+            font-weight: bold;
+            background-color: #fadbd8;
+        }
+
+        .banner {
+            width: 90%; /* 調整寬度以確保總和不超過 100% */
+            float: left;
+            height: 110px;
+            text-align: center;
+
+            font-size: 15px;
+            color: #fffaf3;
+            font-weight: bold;
+            background-color: rgba(35, 69, 110, 0.8);
+        }
+
+        .banner-form {
+            width: 100%;
+        }
+
+
+        .banner-form fieldset {
+            border: none;
+            text-align: left;
+            margin-top: 8px;
+        }
+
+        .banner-form fieldset legend {
+            font-size: 20px;
+            color: rgb(255, 255, 255);
+            margin-bottom: 5px;
+        }
+
+        .sidebar1 {
+            width: 10%;
+            float: left;
+            height: 110px;
+            text-align: center;
+            font-size: 15px;
+            color: #ffffff;
+            font-weight: bold;
+            background-color: rgba(35, 69, 110, 0.8);
+            position: relative; /* 新增這一行 */
+        }
+
+        .computerlist {
+            height: 300px;
+            width: 40%;
+            margin-left: 100px;
+            margin-top: 50px;
+            float: left;
+            border: 1px solid #3B3B3B;
+            overflow-y: scroll;
+        }
+
+        th,
+        td {
+            text-align: initial;
+        }
+
+        table {
+            border: none;
+            border-spacing: 0;
+            width: 100%;
+            height: 100px;
+            border-collapse: collapse;
+        }
+
+        caption {
+            background-color: #0D2440;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 18px;
+            padding: 10px;
+        }
+
+        .table__header {
+            background-color: #0D2440;
+            height: 30px;
+            line-height: 30px;
+            color: #ffffff;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .table__body {
+            height: 150px;
+            overflow-y: hidden;
+        }
+
+        .table__cell {
+            text-align: center;
+            height: 30px;
+            line-height: 30px;
+        }
+
+        .table__cell--computer {
+            width: 25%;
+        }
+
+        .table__cell--department {
+            width: 25%;
+        }
+
+        .table__cell--software {
+            width: 25%;
+        }
+
+        .table__cell--software_version {
+            width: 25%;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: rgba(100, 124, 144, 0.49);
+        }
+
+        .numberlist {
+            border: none;
+            border-spacing: 0;
+            margin-right: 140px;
+            margin-top: 50px;
+            background-color: rgba(221, 162, 10, 0);
+            float: right;
+            width: 40%;
+            height: 300px;
+
+        }
+
+        .numbertable {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-spacing: 5px;
+        }
+
+        .numbertable th {
+            color: #34d7af;
+            font-size: 22px;
+
+            height: 50px;
+            text-align: center;
+            border: none;
+        }
+
+        .numbertable td {
+            border: 8px solid #41fcce;
+            text-align: center;
+            font-size: 50px;
+            color: #34d7af;
+        }
+
+        
+.modal {
+    display: none;
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); 
+  }
+  
+
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+    height: 100%;
+    text-align: center;
+    position: relative;
+  }
+  
+
+  .close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close-btn:hover,
+  .close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+
+.oval-button {
+    color: white; 
+    font-size: 30px; 
+    padding: 10px 20px;
+    border: none; 
+    border-radius: 50px; 
+    cursor: pointer; 
+  }
+  
+  .centered-container {
+    text-align: center; 
+    padding: 20px; 
+    background-color: white; 
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto; 
+    height: 68%;
+  }
+  
+  .upload-title {
+    text-align: left;
+    padding: 20px;
+  }
+  #error-update{
+    position: fixed; 
+    z-index: 1; 
+    left: 500px;
+    top: 300px;
+    width: 2%; 
+    height: 60px;
+    overflow: auto; 
+    text-align: center;
+  }
+
+  #sign-all {
+    position: absolute; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    width: 80%;
+    height: 80%;
+}
+
+#change-password input {
+    background-color: #f2f2f2; 
+    border: none;
+    border-radius: 20px; 
+    padding: 10px 15px; 
+    margin: 5px 0; 
+    width: 80%; 
+}
+
+#change-password input:focus {
+    outline: none;
+}
+
+#signbut {
+    background-image: url('./people.jpg');
+    position: relative;
+    top:10px;
+    right: 10px;
+    width: 80px; 
+    height: 70px; 
+    border: none;
+    cursor: pointer;
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle; 
+}
+
+
+
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <a href="" class="logo"><img src='/static/bugbunker.png' width="180" height="90"></a>
+        <nav>
+            <a href="">依條件顯示</a>
+            <a href="">電腦更新狀況</a>
+            <a href="" id="update" onclick="update(event)">上傳資料</a>
+            <a href="" >人員管理</a>
+            <a href="">eeeee</a>
+            <a href="">ffff</a>
+            <button id="signbut" onclick="sign(event)"></button>
+        </nav>
+    </div>
+    
+<div id="error-update" style="display: none; background-color: cornflowerblue ; width:50%;" >
+    <span>
+        尚無權限上傳
+    </span>
+    <a href="">
+    <button class="oval-button" style="background-color: #8b8b8b; font-size:15px;">
+        確定
+    </button>
+    </a>
+</div>
+
+<div id="myModal" class="modal">
+    <div class="modal-content" style="background-color: #bebbbb;">
+        <a href=""><span class="close-btn">&times;</span></a>
+
+        <div id="update-all">
+            <div class="upload-title">
+                <h1>上傳資料</h1>
+            </div>
+            <div class="centered-container">
+                <br><br><br><br><br><br>
+                <button class="oval-button" onclick="triggerFileUpload()" style="background-color: cornflowerblue;">
+                    +新增檔案
+                </button>
+                <br><br>
+                <div id="fileCount"></div>
+                <br><br>
+                <input type="file" id="fileInput" style="display: none;" onchange="uploadFiles()" multiple/>
+                <br><br><br><br><br>
+                <button class="oval-button" onclick="ErrorUpdate()" style="background-color: #8b8b8b;">
+                    確定
+                </button>                
+            </div>
+        </div>
+
+        <div id="sign-all">
+            <div id="data" style="background-color: white; height:600px;">
+                <div>
+                    <br>
+                <h1>個人資料</h1>    
+                </div>
+                <br><br>
+                <div style="display: flex; text-align: left; margin-left: 100px;">
+                    <div style="text-align: left; margin-left: 100px; font-size:20px">
+                        <span>職員編號　　</span>
+                        <span id="signid">001</span>
+                        <br><br>
+                        <span>姓名　　　　</span>
+                        <span id="signname">蔡ＯＯ</span>
+                        <br><br>
+                        <span>部門　　　　</span>
+                        <span id="department">資訊</span>
+                        <br><br>
+                        <span>信箱　　　　</span>
+                        <span id="signmail">A001@gmail.com</span>
+                        <br><br>
+                        <span>密碼　　　　</span>
+                        <span id="password">*********</span>
+                        <span id="realpassword" style="display: none;">123456789</span>
+                        <button onclick="togglePassword()"><i class="fas fa-eye"></i></button>
+                        
+                    </div>
+                    <div >
+                        <img src="./people.jpg" style="width: 300px; height:300px; margin-left: 50px;">
+                    </div>
+                </div>
+                <div style="display:flex; text-align: left; margin-left: 300px;">
+                    <button class="oval-button" id="change-password-but" onclick="ChangePassword()" style="background-color: lightblue;">修改密碼</button>
+                    <button class="oval-button" id="sign-out-but" style="margin-left: 200px; background-color:crimson">登出</button>
+                </div>
+            </div>
+            <div id="change-password" style="text-align: center; display:none;">
+                <div style="background-color: white; height:600px; display:flex;">
+                    <div style="text-align: left; margin-left: 200px;">
+                        <br><br>
+                        <h1 style="margin-left: 200px;">修改密碼</h1>
+                        <br>
+                        <h3>舊密碼</h3>
+                        <input id="old-password">
+                        <h3>新密碼</h3>
+                        <input id="new-password">
+                        <h3>再次輸入新密碼</h3>
+                        <input id="confirm-new-password">
+                    </div>
+                    <div style="margin-top: 440px;;">
+                        <button class="oval-button" onclick="checkPasswords()" style="background-color: lightblue; font-size:20px;">確定</button>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  
+<div id="body-content">
+    <div class="container">
+        <div class="sidebar1">
+        </div>
+        <div class="banner">
+            <form class="banner-form">
+                <fieldset>
+                    <legend>軟體</legend>
+                    <div style="float:left;padding:0 2px;"><input type="checkbox" style="margin-bottom:2px;">7-Zip</div>
+                    <div style="float:left;padding:0 2px;"><input type="checkbox" style="margin-bottom:2px;">Adobe Acrobat
+                        Reader DC MUI
+                    </div>
+                    <div style="float:left;padding:0 2px;"><input type="checkbox" style="margin-bottom:2px;">Android Studio
+                    </div>
+                    <div style="float:left;padding:0 2px;"><input type="checkbox" style="margin-bottom:2px;">Apache Tomcat
+                    </div>
+                    <div style="float:left;padding:0 2px;"><input type="checkbox" style="margin-bottom:2px;">Git</div>
+                    <div style="float:left;padding:0 2px;"><input type="checkbox" style="margin-bottom:2px;">Google Chrome
+                    </div>
+                    <div style="float:left;padding:0 2px;"><input type="checkbox" style="margin-bottom:2px;">IntelliJ IDEA
+                        Community
+                    </div>
+                    <div style="float:left;padding:0 2px;"><input type="checkbox" style="margin-bottom:2px;">Microsoft
+                        Visual Studio Code
+                    </div>
+                    <div style="float:left;padding:0 2px;"><input type="checkbox" style="margin-bottom:2px;">Mozilla Firefox
+                    </div>
+                    <div style="float:left;padding:0 2px;"><input type="checkbox" style="margin-bottom:2px;">Node.js</div>
+                    <div style="float:left;padding:0 2px;"><input type="checkbox" style="margin-bottom:2px;">Notepad++</div>
+                    <div style="float:left;padding:0 2px;"><input type="checkbox" style="margin-bottom:2px;">Potplayer-64
+                        bit
+                    </div>
+                    <div style="float:left;padding:0 2px;"><input type="checkbox" style="margin-bottom:2px;">Python</div>
+                    <div style="float:left;padding:0 2px;"><input type="checkbox" style="margin-bottom:2px;">Wireshark</div>
+
+                </fieldset>
+
+            </form>
+
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="sidebar2">
+            <form class="sidebar2-form">
+                <fieldset>
+                    <legend>部門</legend>
+                    <div><input type="checkbox">設計部</div>
+                    <div><input type="checkbox">資訊部</div>
+                    <div><input type="checkbox">財務部</div>
+                    <div><input type="checkbox">法務部</div>
+                    <div><input type="checkbox">秘書部</div>
+                    <div><input type="checkbox">人事部</div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="center">
+            center
+        </div>
+    </div>
+    <div class="computerlist">
+        <table>
+            <caption>電腦清單</caption>
+            <thead class="table__header">
+            <tr>
+                <th class="table__cell table__cell--computer">電腦編號</th>
+                <th class="table__cell table__cell--department">部門</th>
+                <th class="table__cell table__cell--software">軟體</th>
+                <th class="table__cell table__cell--software_version">軟體版本</th>
+            </tr>
+            </thead>
+            <tbody class="table__body">
+            <tr class="table__body__row">
+                <td class="table__cell table__cell--computer">0000001</td>
+                <td class="table__cell table__cell--department">設計部</td>
+                <td class="table__cell table__cell--software">Microsoft</td>
+                <td class="table__cell table__cell--software_version">3.8</td>
+            </tr>
+            <tr class="table__body__row">
+                <td class="table__cell table__cell--computer">0000001</td>
+                <td class="table__cell table__cell--department">設計部</td>
+                <td class="table__cell table__cell--software">Microsoft</td>
+                <td class="table__cell table__cell--software_version">3.8</td>
+            </tr>
+            <tr class="table__body__row">
+                <td class="table__cell table__cell--computer">0000001</td>
+                <td class="table__cell table__cell--department">設計部</td>
+                <td class="table__cell table__cell--software">Microsoft</td>
+                <td class="table__cell table__cell--software_version">3.8</td>
+            </tr>
+            <tr class="table__body__row">
+                <td class="table__cell table__cell--computer">0000001</td>
+                <td class="table__cell table__cell--department">設計部</td>
+                <td class="table__cell table__cell--software">Microsoft</td>
+                <td class="table__cell table__cell--software_version">3.8</td>
+            </tr>
+            <tr class="table__body__row">
+                <td class="table__cell table__cell--computer">0000001</td>
+                <td class="table__cell table__cell--department">設計部</td>
+                <td class="table__cell table__cell--software">Microsoft</td>
+                <td class="table__cell table__cell--software_version">3.8</td>
+            </tr>
+            <tr class="table__body__row">
+                <td class="table__cell table__cell--computer">0000001</td>
+                <td class="table__cell table__cell--department">設計部</td>
+                <td class="table__cell table__cell--software">Microsoft</td>
+                <td class="table__cell table__cell--software_version">3.8</td>
+            </tr>
+            <tr class="table__body__row">
+                <td class="table__cell table__cell--computer">0000001</td>
+                <td class="table__cell table__cell--department">設計部</td>
+                <td class="table__cell table__cell--software">Microsoft</td>
+                <td class="table__cell table__cell--software_version">3.8</td>
+            </tr>
+            <tr class="table__body__row">
+                <td class="table__cell table__cell--computer">0000001</td>
+                <td class="table__cell table__cell--department">設計部</td>
+                <td class="table__cell table__cell--software">Microsoft</td>
+                <td class="table__cell table__cell--software_version">3.8</td>
+            </tr>
+            <tr class="table__body__row">
+                <td class="table__cell table__cell--computer">0000001</td>
+                <td class="table__cell table__cell--department">設計部</td>
+                <td class="table__cell table__cell--software">Microsoft</td>
+                <td class="table__cell table__cell--software_version">3.8</td>
+            </tr>
+            <tr class="table__body__row">
+                <td class="table__cell table__cell--computer">0000001</td>
+                <td class="table__cell table__cell--department">設計部</td>
+                <td class="table__cell table__cell--software">Microsoft</td>
+                <td class="table__cell table__cell--software_version">3.8</td>
+            </tr>
+            <tr class="table__body__row">
+                <td class="table__cell table__cell--computer">0000001</td>
+                <td class="table__cell table__cell--department">設計部</td>
+                <td class="table__cell table__cell--software">Microsoft</td>
+                <td class="table__cell table__cell--software_version">3.8</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="numberlist">
+        <table class="numbertable">
+            <thead>
+            <tr>
+                <th><u>已更新</u></th>
+                <th><u>未更新</u></th>
+            </tr>
+            </thead>
+            <tbody>
+            <td>3</td>
+            <td>4</td>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+var modal = document.getElementById("myModal");
+var btn = document.getElementsByClassName("close-btn")[0];
+var errorModal = document.getElementById('error-update');
+
+
+btn.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+function update(event) {
+    event.preventDefault();
+    const bodyall = document.getElementById('body-content');
+    const updateAll = document.getElementById('update-all');
+    const signAll = document.getElementById('sign-all');
+
+    bodyall.style.display = 'none';
+    modal.style.display = 'flex';
+    updateAll.style.display = 'block';
+    signAll.style.display = 'none';
+}
+
+function sign(event) {
+    event.preventDefault();
+    const bodyall = document.getElementById('body-content');
+    const updateAll = document.getElementById('update-all');
+    const signAll = document.getElementById('sign-all');
+
+    bodyall.style.display = 'none';
+    modal.style.display = 'flex';
+    updateAll.style.display = 'none';
+    signAll.style.display = 'block';
+}
+
+        
+    function triggerFileUpload() {
+        document.getElementById('fileInput').click();
+    }
+    
+    function uploadFiles() {
+        var fileInput = document.getElementById('fileInput');
+        var files = fileInput.files;
+        var fileCount = files.length;
+    
+        document.getElementById('fileCount').innerText = '已上傳數量: ' + fileCount;
+    
+    }
+    
+    function togglePassword() {
+        var password = document.getElementById('password');
+        var realPassword = document.getElementById('realpassword');
+        var eyeIcon = document.querySelector('button i');
+    
+        if (realPassword.style.display === 'none') {
+            realPassword.style.display = 'inline';
+            password.style.display = 'none';
+            eyeIcon.classList.remove('fa-eye');
+            eyeIcon.classList.add('fa-eye-slash');
+        } else {
+            realPassword.style.display = 'none';
+            password.style.display = 'inline';
+            eyeIcon.classList.remove('fa-eye-slash');
+            eyeIcon.classList.add('fa-eye');
+        }
+    }
+    
+    function ChangePassword() {
+        var dataDiv = document.getElementById('data');
+        var changePasswordDiv = document.getElementById('change-password');
+    
+        dataDiv.style.display = 'none';
+    
+        changePasswordDiv.style.display = 'block';
+    }
+    
+    function checkPasswords() {
+        var newPassword = document.getElementById('new-password').value;
+        var confirmPassword = document.getElementById('confirm-new-password').value;
+    
+        if (newPassword === confirmPassword) {
+        } else {
+            alert("新密碼與再次輸入新密碼不相同，請重新輸入！");
+        }
+    }
+    
+
+</script>
+</body>
+
+</html>
